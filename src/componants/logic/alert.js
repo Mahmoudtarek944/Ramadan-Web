@@ -48,3 +48,14 @@ export const Toast = Swal.mixin({
 Toast.fire({
   title: ramadanAzkar[Math.floor(Math.random() * ramadanAzkar.length)],
 });
+
+export function savedDone() {
+  Swal.fire({
+    position: "center",
+    title: "تم الحفظ",
+    background: "rgba(2, 44, 34, 0.85)",
+    color: "#f7c948",
+    showConfirmButton: false,
+    timer: 1000,
+  });
+}

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import homeImg from "../../assets/75288.jpg";
-import "../../style/Home.css";
 import { getTimeSalah } from "../../../api/api";
 import { getNextPrayer } from "../logic/salahTime";
 import { Toast } from "../logic/alert";
