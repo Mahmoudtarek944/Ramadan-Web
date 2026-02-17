@@ -173,6 +173,9 @@ body {
 }
 
 @media screen and (max-width: 554px) {
+  .glass-card {
+    width: 70% !important;
+  }
   .glass-card-reading {
     width: 95% !important;
     padding: 1.5em 1em !important;
