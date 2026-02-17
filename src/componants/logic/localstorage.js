@@ -1,4 +1,8 @@
 export function savePage(page) {
-  localStorage.setItem("pageNumber", page);
+  localStorage.setItem("pageNumber", JSON.stringify(page));
 }
-export let getSavedPage = localStorage.getItem("pageNumber");
+
+export function getSavedPage() {
+  const saved = localStorage.getItem("pageNumber");
+  return saved ? JSON.parse(saved) : 1;
+}

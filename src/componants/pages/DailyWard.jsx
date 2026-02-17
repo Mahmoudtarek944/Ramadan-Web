@@ -5,7 +5,7 @@ import { getSavedPage, savePage } from "../logic/localstorage";
 import { Link, useNavigate } from "react-router-dom";
 import { savedDone } from "../logic/alert";
 function DailyWard() {
-  let [page, setPage] = useState(JSON.parse(getSavedPage));
+  let [page, setPage] = useState(() => getSavedPage());
   let [daily, setDaily] = useState({});
   useEffect(() => {
     let isMount = true;
