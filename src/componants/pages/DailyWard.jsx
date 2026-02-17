@@ -71,7 +71,7 @@ function DailyWard() {
               </span>
             ))}
           </div>
-          <div className="d-flex justify-content-center gap-4">
+          <div className="d-flex justify-content-center gap-4 btns">
             <button
               onClick={() => {
                 {

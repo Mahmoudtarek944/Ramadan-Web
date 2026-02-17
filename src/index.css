@@ -153,15 +153,6 @@ body {
   backdrop-filter: blur(5px);
 }
 
-@media screen and (max-width: 554px) {
-  .glass-card {
-    width: 70% !important;
-  }
-  .glass-card-reading {
-    width: 80% !important;
-  }
-}
-
 .main-footer {
   background: rgba(0, 0, 0, 0.8) !important;
   backdrop-filter: blur(10px);
@@ -179,4 +170,20 @@ body {
   font-family: "Amiri", serif !important;
   color: rgba(255, 255, 255, 0.7);
   font-size: 0.9rem;
+}
+
+@media screen and (max-width: 554px) {
+  .glass-card-reading {
+    width: 95% !important;
+    padding: 1.5em 1em !important;
+    margin: 0.7em auto;
+  }
+  .text-center span {
+    font-size: 1.4rem !important;
+    line-height: 2 !important;
+  }
+  .btns {
+    flex-wrap: wrap;
+    gap: 0.8em;
+  }
 }
