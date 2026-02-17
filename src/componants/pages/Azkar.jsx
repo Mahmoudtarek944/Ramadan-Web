@@ -3,7 +3,7 @@ import homeImg from "../../assets/ramadan_luxury_background.jpg";
 import { dailyAzkar } from "../logic/azkar";
 import { getTimeSalah } from "../../../api/api";
 function Azkar() {
-  let [day, setDay] = useState(2);
+  let [day, setDay] = useState(1);
   const [counters, setCounters] = useState([0, 0, 0]);
 
   useEffect(() => {
@@ -29,9 +29,11 @@ function Azkar() {
   if (day === "undefined" || !day) {
     return <div className="loading">جاري التحميل...</div>;
   }
-  let f = dailyAzkar[day];
-  let s = dailyAzkar[day - 1];
-  let th = dailyAzkar[day - 2];
+  const currentDay = parseInt(day) || 1;
+  let startIndex = ((currentDay - 1) * 3) % dailyAzkar.length;
+  let f = dailyAzkar[startIndex];
+  let s = dailyAzkar[(startIndex + 1) % dailyAzkar.length];
+  let th = dailyAzkar[(startIndex + 2) % dailyAzkar.length];
   let azkarForOneDay = [f, s, th];
   return (
     <>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import homeImg from "../../assets/24157.jpg";
 import { dailyReadingQuran } from "../../../api/api";
 import { getSavedPage, savePage } from "../logic/localstorage";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { savedDone } from "../logic/alert";
 import { sorahNames } from "../logic/sorahArray";
 function DailyWard() {
