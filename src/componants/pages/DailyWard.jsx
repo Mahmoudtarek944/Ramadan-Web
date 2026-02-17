@@ -4,6 +4,7 @@ import { dailyReadingQuran } from "../../../api/api";
 import { getSavedPage, savePage } from "../logic/localstorage";
 import { Link, useNavigate } from "react-router-dom";
 import { savedDone } from "../logic/alert";
+import { sorahNames } from "../logic/sorahArray";
 function DailyWard() {
   let [page, setPage] = useState(() => getSavedPage());
   let [daily, setDaily] = useState({});
@@ -51,7 +52,10 @@ function DailyWard() {
       >
         <div className=" glass-card-reading mt-4">
           <div className="text-center">
-            <h3 className="text-white fw-bold ">{page > 0 ? page : 1}</h3>
+            <h3 className="text-white fw-bold ">
+              {page > 0 ? page : 1} -
+              {sorahNames[daily[0].verse_key.split(":")[0]]}
+            </h3>
             {daily.map((obj) => (
               <span
                 key={obj.id}
