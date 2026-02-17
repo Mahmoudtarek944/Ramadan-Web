@@ -8,6 +8,7 @@ import { sorahNames } from "../logic/sorahArray";
 function DailyWard() {
   let [page, setPage] = useState(() => getSavedPage());
   let [daily, setDaily] = useState({});
+
   useEffect(() => {
     let isMount = true;
     let getDailyReading = async () => {

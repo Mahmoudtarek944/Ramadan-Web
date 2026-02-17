@@ -172,6 +172,65 @@ body {
   font-size: 0.9rem;
 }
 
+.glass-card-zikr {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(1em);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(247, 201, 72, 0.2);
+  width: 90%;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.glass-card-zikr:not(.zikr-done):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 1em 4em rgba(0, 0, 0, 0.3);
+}
+.zikr-text {
+  font-family: "Amiri", serif;
+  color: #ffffff;
+  font-size: 1.6rem;
+  line-height: 1.8;
+}
+.zikr-goal,
+.incrementZekr {
+  background: linear-gradient(45deg, #f7c948, #b9932d);
+  color: #022c22;
+  font-weight: bold;
+  border-radius: 3em;
+  font-size: 0.9rem;
+  display: inline-block;
+  box-shadow: 0 0.2em 1em rgba(247, 201, 72, 0.3);
+}
+.incrementZekr:hover {
+  background: rgba(255, 255, 255, 0.489) !important;
+}
+.zikr-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+.counter {
+  color: white;
+  font-family: "Amiri", serif;
+  font-size: 1.5em;
+}
+.zikr-done {
+  border-color: #28a745 !important;
+  background: rgba(40, 167, 69, 0.1) !important;
+}
+
+@media screen and (max-width: 720px) {
+  .azkar-container {
+    flex-wrap: wrap;
+  }
+  .glass-card-zikr {
+    width: 60% !important;
+    margin-top: 2em;
+  }
+}
 @media screen and (max-width: 554px) {
   .glass-card {
     width: 70% !important;
@@ -188,5 +247,8 @@ body {
   .btns {
     flex-wrap: wrap;
     gap: 0.8em;
+  }
+  .divDecGoal {
+    flex-direction: column;
   }
 }

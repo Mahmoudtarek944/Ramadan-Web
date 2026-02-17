@@ -59,3 +59,13 @@ export function savedDone() {
     timer: 1000,
   });
 }
+export function finsheDone() {
+  Swal.fire({
+    position: "center",
+    title: "تم اللانتهاء من اذكار اليوم  , زادك الله نوراً وطمأنينة",
+    background: "rgba(2, 44, 34, 0.85)",
+    color: "#f7c948",
+    showConfirmButton: false,
+    timer: 4000,
+  });
+}
