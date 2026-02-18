@@ -27,10 +27,18 @@ function Home() {
   }
   const timings = time.data.timings;
   const nextPrayer = getNextPrayer(timings);
-  const day = time.data.date.hijri.day;
-  const month = time.data.date.hijri.month.ar;
-  const year = time.data.date.hijri.year;
-  const weekday = time.data.date.hijri.weekday.ar;
+  let day = parseInt(time.data.date.hijri.day);
+  let month = time.data.date.hijri.month.ar;
+  let year = time.data.date.hijri.year;
+  let weekday = time.data.date.hijri.weekday.ar;
+  if (day === 1 && month === "رَمَضان" && weekday === "الاربعاء") {
+    day = 30;
+    month = "شَعْبَان";
+  } else if (weekday === "الخميس" && month === "رَمَضان" && day === 2) {
+    day = 1;
+  } else if (month === "رَمَضان") {
+    day = day - 1;
+  }
 
   return (
     <>

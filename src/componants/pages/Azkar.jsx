@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import homeImg from "../../assets/ramadan_luxury_background.jpg";
 import { dailyAzkar } from "../logic/azkar";
 import { getTimeSalah } from "../../../api/api";
+import { savedDone } from "../logic/alert";
+import { useNavigate } from "react-router-dom";
+import { getSavedCounter, saveAzkerCounter } from "../logic/localstorage";
 function Azkar() {
   let [day, setDay] = useState(1);
   const [counters, setCounters] = useState([0, 0, 0]);
@@ -21,10 +24,22 @@ function Azkar() {
   }, [day]);
 
   const handleIncrement = (index) => {
-    const newCounters = [...counters];
+    const newCounters = [...getSavedCounter()];
     newCounters[index] += 1;
     setCounters(newCounters);
+    saveAzkerCounter(newCounters);
   };
+
+  let navigate = useNavigate();
+
+  function hadelClickSave() {
+    savedDone();
+    saveAzkerCounter([...counters]);
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  }
+
   // console.log(day.date);
   if (day === "undefined" || !day) {
     return <div className="loading">جاري التحميل...</div>;
@@ -35,10 +50,12 @@ function Azkar() {
   let s = dailyAzkar[(startIndex + 1) % dailyAzkar.length];
   let th = dailyAzkar[(startIndex + 2) % dailyAzkar.length];
   let azkarForOneDay = [f, s, th];
+
+  // console.log(getSavedCounter()); // array js
   return (
     <>
       <div
-        className="text-center d-flex justify-content-center align-items-center "
+        className="text-center d-flex justify-content-center align-items-center flex-column"
         style={{
           backgroundImage: `url(${homeImg})`,
           backgroundPosition: "center",
@@ -47,10 +64,10 @@ function Azkar() {
           minHeight: "100vh",
         }}
       >
-        <div className="azkar-container d-flex gap-5 justify-content-center p-3 mt-5">
+        <div className="azkar-container d-flex gap-5 justify-content-center p-3 mt-5 ">
           {azkarForOneDay.map((zikr, index) => (
             <div
-              key={zikr.id}
+              key={index}
               className={
                 counters[index] === zikr.goal
                   ? "zikr-done glass-card-zikr rounded-4 p-4 d-flex flex-column gap-1 align-items-center text-center"
@@ -68,7 +85,7 @@ function Azkar() {
                 <span className="counter">
                   {counters[index] === zikr.goal
                     ? "تم بحمد الله الانتهاء من الذكر"
-                    : counters[index]}
+                    : getSavedCounter()[index]}
                 </span>
               </div>
               <button
@@ -85,6 +102,11 @@ function Azkar() {
               </button>
             </div>
           ))}
+        </div>
+        <div>
+          <button className="btn-save mb-3" onClick={hadelClickSave}>
+            حفظ
+          </button>
         </div>
       </div>
     </>
