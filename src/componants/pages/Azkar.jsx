@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getSavedCounter, saveAzkerCounter } from "../logic/localstorage";
 function Azkar() {
   let [day, setDay] = useState(1);
-  const [counters, setCounters] = useState([0, 0, 0]);
+  const [counters, setCounters] = useState(() => getSavedCounter());
 
   useEffect(() => {
     let isMounted = true;
@@ -24,10 +24,12 @@ function Azkar() {
   }, [day]);
 
   const handleIncrement = (index) => {
-    const newCounters = [...getSavedCounter()];
-    newCounters[index] += 1;
-    setCounters(newCounters);
-    saveAzkerCounter(newCounters);
+    setCounters((prevCounters) => {
+      const newCounters = [...prevCounters];
+      newCounters[index] += 1;
+      saveAzkerCounter(newCounters);
+      return newCounters;
+    });
   };
 
   let navigate = useNavigate();
