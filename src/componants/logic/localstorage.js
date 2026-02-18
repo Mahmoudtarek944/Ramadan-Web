@@ -13,5 +13,5 @@ export function saveAzkerCounter(c) {
 
 export function getSavedCounter() {
   const saved = localStorage.getItem("counter");
-  return saved ? JSON.parse(saved) : 0;
+  return saved ? JSON.parse(saved) : [0, 0, 0];
 }
